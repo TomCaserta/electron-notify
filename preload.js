@@ -48,6 +48,7 @@ function setContents(event, notificationObj) {
       if (notificationObj.sound.match(/^file\:/) !== null
       || notificationObj.sound.match(/^\//) !== null) {
         let audio = new global.window.Audio(notificationObj.sound)
+        audio.volume = notificationObj.hasOwnProperty("volume") ? notificationObj.volume : 1;
         audio.play()
       }
     } catch (e) {
